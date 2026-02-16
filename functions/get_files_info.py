@@ -15,6 +15,8 @@ def get_files_info(working_directory: str, directory: str = ".") -> str:
         result = []
 
         for name in os.listdir(target_dir):
+            if name in (".", ".."):
+                continue
             path = os.path.join(target_dir, name)
             file_size = os.path.getsize(path)
             is_dir = os.path.isdir(path)
